@@ -1,0 +1,17 @@
+C:\Users\drago\source\repos\Tasks\Tasks\bin\Debug\Tasks.exe.config
+C:\Users\drago\source\repos\Tasks\Tasks\bin\Debug\Tasks.exe
+C:\Users\drago\source\repos\Tasks\Tasks\bin\Debug\Tasks.pdb
+C:\Users\drago\source\repos\Tasks\Tasks\obj\Debug\Tasks.csproj.AssemblyReference.cache
+C:\Users\drago\source\repos\Tasks\Tasks\obj\Debug\Tasks.csproj.SuggestedBindingRedirects.cache
+C:\Users\drago\source\repos\Tasks\Tasks\obj\Debug\MainWindow.g.cs
+C:\Users\drago\source\repos\Tasks\Tasks\obj\Debug\App.g.cs
+C:\Users\drago\source\repos\Tasks\Tasks\obj\Debug\Tasks_MarkupCompile.cache
+C:\Users\drago\source\repos\Tasks\Tasks\obj\Debug\Tasks_MarkupCompile.lref
+C:\Users\drago\source\repos\Tasks\Tasks\obj\Debug\MainWindow.baml
+C:\Users\drago\source\repos\Tasks\Tasks\obj\Debug\Tasks.g.resources
+C:\Users\drago\source\repos\Tasks\Tasks\obj\Debug\Tasks.Properties.Resources.resources
+C:\Users\drago\source\repos\Tasks\Tasks\obj\Debug\Tasks.csproj.GenerateResource.cache
+C:\Users\drago\source\repos\Tasks\Tasks\obj\Debug\Tasks.csproj.CoreCompileInputs.cache
+C:\Users\drago\source\repos\Tasks\Tasks\obj\Debug\Tasks.exe
+C:\Users\drago\source\repos\Tasks\Tasks\obj\Debug\Tasks.pdb
+C:\Users\drago\source\repos\Tasks\Tasks\obj\Debug\GeneratedInternalTypeHelper.g.cs
