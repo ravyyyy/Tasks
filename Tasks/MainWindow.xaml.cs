@@ -1,7 +1,9 @@
-﻿using System.Windows;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using Tasks.Models;
+using Tasks.ViewModels;
 using Tasks.Views;
 
 namespace Tasks
@@ -149,7 +151,9 @@ namespace Tasks
 
         private void ManageCategory_Click(object sender, RoutedEventArgs e)
         {
-            ManageCategory manageCategory = new ManageCategory();
+            TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
+            ObservableCollection<TDL> tdls = treeViewVM.TDLs;
+            ManageCategory manageCategory = new ManageCategory(tdls);
             manageCategory.Show();
         }
     }

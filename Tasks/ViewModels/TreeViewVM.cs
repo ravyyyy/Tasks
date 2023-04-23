@@ -47,14 +47,61 @@ namespace Tasks.ViewModels
                     Image = new BitmapImage(new Uri(@"/Images/home.png", UriKind.Relative)),
                     ToDLs = new ObservableCollection<TDL>
                 {
-                    new TDL { Name = "b", Image = new BitmapImage(new Uri(@"/Images/work.png", UriKind.Relative)), Tasks = new ObservableCollection<Models.Task>(), ToDLs = new ObservableCollection<TDL>()},
+                    new TDL { Name = "b", Image = new BitmapImage(new Uri(@"/Images/work.png", UriKind.Relative)), Tasks = new ObservableCollection<Models.Task>{
+                    new Models.Task
+                    {
+                        Name = "c",
+                        Category = categories[2].Name,
+                        Status = false,
+                        DateOfFinish = new DateTime(2023, 4, 25),
+                        Deadline = new DateTime(2023, 4, 26),
+                        Description = "o scurta descriere",
+                        Priority = Priority.High,
+                        Type = Models.Type.Minor
+                    }
+                }, ToDLs = new ObservableCollection<TDL>()},
                 },
                     Tasks = new ObservableCollection<Models.Task>
                 {
                     new Models.Task
                     {
                         Name = "c",
-                        Category = new Category() { Name = "Home" }.ToString(),
+                        Category = categories[1].Name,
+                        Status = false,
+                        DateOfFinish = new DateTime(2023, 4, 25),
+                        Deadline = new DateTime(2023, 4, 26),
+                        Description = "o scurta descriere",
+                        Priority = Priority.High,
+                        Type = Models.Type.Minor
+                    }
+                }
+                },
+                new TDL
+                {
+                    Name = "a",
+                    Image = new BitmapImage(new Uri(@"/Images/home.png", UriKind.Relative)),
+                    ToDLs = new ObservableCollection<TDL>
+                {
+                    new TDL { Name = "b", Image = new BitmapImage(new Uri(@"/Images/work.png", UriKind.Relative)), Tasks = new ObservableCollection<Models.Task>{
+                    new Models.Task
+                    {
+                        Name = "c",
+                        Category = categories[2].Name,
+                        Status = false,
+                        DateOfFinish = new DateTime(2023, 4, 25),
+                        Deadline = new DateTime(2023, 4, 26),
+                        Description = "o scurta descriere",
+                        Priority = Priority.High,
+                        Type = Models.Type.Minor
+                    }
+                }, ToDLs = new ObservableCollection<TDL>()},
+                },
+                    Tasks = new ObservableCollection<Models.Task>
+                {
+                    new Models.Task
+                    {
+                        Name = "c",
+                        Category = categories[1].Name,
                         Status = false,
                         DateOfFinish = new DateTime(2023, 4, 25),
                         Deadline = new DateTime(2023, 4, 26),
@@ -89,6 +136,11 @@ namespace Tasks.ViewModels
                 int index = Categories.IndexOf(categoryToEdit);
                 Categories[index] = new Category { Name = categoryToChange };
             }
+        }
+
+        public void EditTaskCategory(Task task, string category)
+        {
+            task.Category = category;
         }
     }
 }
