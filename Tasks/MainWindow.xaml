@@ -3,12 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Tasks" xmlns:ViewModels="clr-namespace:Tasks.ViewModels"
+        xmlns:ViewModels="clr-namespace:Tasks.ViewModels"
         mc:Ignorable="d"
         Title="Tasks" Height="450" Width="800">
 
     <Window.DataContext>
-        <ViewModels:TDLViewModel/>
+        <ViewModels:TreeViewVM/>
     </Window.DataContext>
 
     <Grid Name="TasksGrid">
@@ -39,10 +39,10 @@
                 <MenuItem Header="Change Path"/>
             </MenuItem>
             <MenuItem Header="Task">
-                <MenuItem Header="Add"/>
-                <MenuItem Header="Edit"/>
-                <MenuItem Header="Delete"/>
-                <MenuItem Header="Set Done"/>
+                <MenuItem Header="Add" Click="Add_Click"/>
+                <MenuItem Header="Edit" Click="Edit_Click"/>
+                <MenuItem Header="Delete" Click="Delete_Click"/>
+                <MenuItem Header="Set Done" Click="SetDone_Click"/>
                 <MenuItem Header="Move Up"/>
                 <MenuItem Header="Move Down"/>
                 <MenuItem Header="Manage Category"/>
@@ -54,13 +54,13 @@
                 <MenuItem Header="Statistics"/>
             </MenuItem>
             <MenuItem Header="Help">
-                <MenuItem Header="About"/>
+                <MenuItem Header="About" Click="Help_Click"/>
             </MenuItem>
         </Menu>
 
-        <TreeView Name="TDLTreeView" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding TdlCollection}">
+        <TreeView Name="TDLTreeView" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding TDLs}" SelectedItemChanged="TreeView_SelectedItemChanged">
             <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate ItemsSource="{Binding TDLs}">
+                <HierarchicalDataTemplate ItemsSource="{Binding ToDLs}">
                     <StackPanel Orientation="Horizontal">
                         <Image Width="16" Height="16" Margin="2" Source="{Binding Image}"/>
                         <TextBlock Text="{Binding Name}"/>
@@ -69,7 +69,7 @@
             </TreeView.ItemTemplate>
         </TreeView>
 
-        <ListView Name="TaskListView" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Tasks}">
+        <ListView Name="TaskListView" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SelectedItem.Tasks, ElementName=TDLTreeView}">
             <ListView.View>
                 <GridView>
                     <GridView.ColumnHeaderContainerStyle>
@@ -85,7 +85,7 @@
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <CheckBox Grid.Column="0" Name="IsDoneCheckBox" IsChecked="{Binding Status}"/>
+                                    <CheckBox Grid.Column="0" x:Name="IsDoneCheckBox" IsChecked="{Binding Status}"/>
                                     <TextBlock Grid.Column="1" Text="{Binding Name}"/>
                                 </Grid>
                             </DataTemplate>
@@ -98,8 +98,31 @@
             </ListView.View>
         </ListView>
 
-        <TextBlock Name="DescriptionTask" Grid.Row="2" Grid.Column="1" Text="{Binding SelectedItem.Description, ElementName=TaskListView, FallbackValue='No task selected'}" Margin="0,26,0,0"/>
-        <Label Name="Description" Grid.Row="2" Grid.Column="1" Content="Selected task's notes and attachments" HorizontalAlignment="Left" Margin="0,0,0,5" VerticalAlignment="Top"/>
+        <Grid Grid.Column="0" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Content="Tasks due today: "/>
+            <Label Grid.Column="0" Grid.Row="1" Content="Tasks due tomorrow: "/>
+            <Label Grid.Column="0" Grid.Row="2" Content="Tasks overdue: "/>
+            <Label Grid.Column="0" Grid.Row="3" Content="Tasks done: "/>
+            <Label Grid.Column="0" Grid.Row="4" Content="Tasks to be done: "/>
+        </Grid>
+
+        <Border Grid.Row="2" Grid.Column="1" BorderThickness="1" BorderBrush="Black">
+            <Grid>
+                <TextBlock Name="DescriptionTask" Text="{Binding SelectedItem.Description, ElementName=TaskListView, FallbackValue='No task selected'}" Margin="0,26,0,0"/>
+                <Label Name="Description" Content="Selected task's notes and attachments" HorizontalAlignment="Left" VerticalAlignment="Top" Width="211"/>
+            </Grid>
+        </Border>
 
     </Grid>
 </Window>

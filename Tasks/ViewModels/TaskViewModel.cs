@@ -5,33 +5,32 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tasks.Models;
 
 namespace Tasks.ViewModels
 {
-    public class TaskViewModel : INotifyPropertyChanged
-    {
-        private ObservableCollection<Models.Task> tasks;
+    //public class TaskViewModel : BaseVM
+    //{
+    //    private ObservableCollection<Models.Task> tasks;
 
-        public ObservableCollection<Models.Task> Tasks
-        {
-            get { return tasks; }
-            set 
-            { 
-                tasks = value;
-                OnPropertyChanged("Tasks");
-            }
-        }
+    //    public ObservableCollection<Models.Task> Tasks
+    //    {
+    //        get { return tasks; }
+    //        set 
+    //        { 
+    //            tasks = value;
+    //            OnPropertyChanged("Tasks");
+    //        }
+    //    }
 
-        public TaskViewModel()
-        {
-            tasks = new ObservableCollection<Models.Task>();
-        }
+    //    public TaskViewModel()
+    //    {
+    //        tasks = new ObservableCollection<Models.Task>();
+    //    }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-    }
+    //    void Add(Models.Task task)
+    //    {
+    //        tasks.Add(task);
+    //    }
+    //}
 }

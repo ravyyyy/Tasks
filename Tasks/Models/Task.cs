@@ -12,7 +12,7 @@ namespace Tasks.Models
     public enum Category { Work, Home, Outside, Shopping }
     public enum Priority { Low, Medium, High };
 
-    public class Task : INotifyPropertyChanged
+    public class Task : BaseVM
     {
         private bool status;
         private string name;
@@ -113,11 +113,6 @@ namespace Tasks.Models
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        
     }
 }

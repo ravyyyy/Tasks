@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\drago\source\repos\Tasks\Tasks\obj\Debug\
+D:\Facultate\Anul II\Semestrul II\Medii vizuale de programare\Laboratoare\Tema2\Tasks\Tasks\obj\Debug\
 Tasks
 none
 false
 DEBUG;TRACE
-C:\Users\drago\source\repos\Tasks\Tasks\App.xaml
-1219584333
+D:\Facultate\Anul II\Semestrul II\Medii vizuale de programare\Laboratoare\Tema2\Tasks\Tasks\App.xaml
+3376811108
 
-101501938783
+13-1993840055
 13-1310406943
-MainWindow.xaml;
+MainWindow.xaml;Views\AddTask.xaml;Views\EditTask.xaml;
 
-True
+False
 

@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 
 namespace Tasks.Models
 {
-    public class TDL : INotifyPropertyChanged
+    public class TDL : BaseVM
     {
         private string name;
         private BitmapImage image;
@@ -36,7 +36,7 @@ namespace Tasks.Models
             }
         }
 
-        public ObservableCollection<TDL> TDLs
+        public ObservableCollection<TDL> ToDLs
         {
             get { return tDLs; }
             set
@@ -54,13 +54,6 @@ namespace Tasks.Models
                 tasks = value;
                 OnPropertyChanged("Tasks");
             }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

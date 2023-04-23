@@ -1,0 +1,55 @@
+﻿<Window x:Class="Tasks.Views.AddTask"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tasks.Views"
+        mc:Ignorable="d"
+        Title="Add" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Name: " Grid.Row="0" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox x:Name="nameTextBox" Grid.Row="0" Grid.Column="1"/>
+        <TextBlock Text="Description: " Grid.Row="1" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox x:Name="descriptionTextBox" Grid.Row="1" Grid.Column="1"/>
+        <TextBlock Grid.Row="7" Text="Status" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <CheckBox x:Name="statusCheckBox" IsChecked="False" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Text="Type" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <ComboBox x:Name="typeComboBox" Grid.Row="2" Grid.Column="1">
+            <ComboBoxItem Content="Minor" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ComboBoxItem Content="Major" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </ComboBox>
+        <TextBlock Text="Category" Grid.Row="3" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <ComboBox x:Name="categoryComboBox" Grid.Row="3" Grid.Column="1">
+            <ComboBoxItem Content="Work" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ComboBoxItem Content="Home" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ComboBoxItem Content="Outside" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ComboBoxItem Content="Shopping" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </ComboBox>
+        <TextBlock Text="Priority" Grid.Row="4" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <ComboBox x:Name="priorityComboBox" Grid.Row="4" Grid.Column="1">
+            <ComboBoxItem Content="Low" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ComboBoxItem Content="Medium" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ComboBoxItem Content="High" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </ComboBox>
+        <TextBlock Text="Deadline" Grid.Row="5" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <DatePicker x:Name="deadlineDatePicker" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Date of finish" Grid.Row="6" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <DatePicker x:Name="dateOfFinishDatePicker" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button Grid.Row="8" Grid.ColumnSpan="2" FontWeight="ExtraBlack" FontSize="24" Click="Submit_Click">SUBMIT</Button>
+    </Grid>
+</Window>
