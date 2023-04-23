@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Media.Imaging;
 using Tasks.Models;
 
@@ -23,7 +19,23 @@ namespace Tasks.ViewModels
             }
         }
         public ObservableCollection<TDL> TDLs { get; set; }
-        public ObservableCollection<string> categories { get; set; } = new ObservableCollection<string>() { "Work", "Home", "Outside", "Shopping" };
+        private ObservableCollection<Category> categories = new ObservableCollection<Category>() 
+        { 
+            new Category() { Name = "Work" },
+            new Category() { Name = "Home" },
+            new Category() { Name = "School" },
+            new Category() { Name = "Outside" }
+        };
+
+        public ObservableCollection<Category> Categories
+        {
+            get { return categories; }
+            set 
+            { 
+                categories = value;
+                OnPropertyChanged("Categories");
+            }
+        }
 
         public TreeViewVM() 
         {
@@ -42,7 +54,7 @@ namespace Tasks.ViewModels
                     new Models.Task
                     {
                         Name = "c",
-                        Category = categories[1],
+                        Category = new Category() { Name = "Home" }.ToString(),
                         Status = false,
                         DateOfFinish = new DateTime(2023, 4, 25),
                         Deadline = new DateTime(2023, 4, 26),
@@ -57,21 +69,26 @@ namespace Tasks.ViewModels
 
         public void AddCategory(string category)
         {
-            categories.Add(category);
-            OnPropertyChanged(nameof(categories));
+            Category category1 = new Category();
+            category1.Name = category;
+            Categories.Add(category1);
+            OnPropertyChanged("Categories");
         }
 
         public void RemoveCategory(string category)
         {
-            categories.Remove(category);
-            OnPropertyChanged(nameof(categories));
+            Category categoryToRemove = Categories.FirstOrDefault(c => c.Name == category);
+            Categories.Remove(categoryToRemove);
         }
 
         public void EditCategory(string categoryToSearch, string categoryToChange)
         {
-            int index = categories.IndexOf(categoryToSearch);
-            categories[index] = categoryToChange;
-            OnPropertyChanged(nameof(categories));
+            Category categoryToEdit = Categories.FirstOrDefault(c => c.Name == categoryToSearch);
+            if (categoryToEdit != null)
+            {
+                int index = Categories.IndexOf(categoryToEdit);
+                Categories[index] = new Category { Name = categoryToChange };
+            }
         }
     }
 }

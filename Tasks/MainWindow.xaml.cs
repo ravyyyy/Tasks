@@ -1,9 +1,7 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using Tasks.Models;
-using Tasks.ViewModels;
 using Tasks.Views;
 
 namespace Tasks

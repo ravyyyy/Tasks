@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\BaseVM.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="ViewModels\TaskViewModel.cs" />
     <Compile Include="ViewModels\TDLViewModel.cs" />
     <Compile Include="ViewModels\TreeViewVM.cs" />

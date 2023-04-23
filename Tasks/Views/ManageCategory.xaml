@@ -14,7 +14,10 @@
     <Grid Margin="0,0,0,-6">
         <TextBlock Text="Category name: " Margin="10,93,667,293"/>
         <TextBox x:Name="categoryTextBox" Margin="138,93,412,308"/>
-        <ComboBox x:Name="categoryComboBox" Margin="532,10,47,338" ItemsSource="{Binding categories}" SelectionChanged="categoryComboBoxSelected"/>
+        <ComboBox x:Name="categoryComboBox" Margin="532,10,47,338" 
+            ItemsSource="{Binding Categories}" 
+            DisplayMemberPath="Name"
+            SelectedValuePath="Name"/>
         <Button Margin="116,325,529,66" Click="Add_Click">ADD</Button>
         <Button Margin="310,325,335,66" Click="Delete_Click">DELETE</Button>
         <Button Margin="499,325,146,66" Content="EDIT" Click="Edit_Click"/>

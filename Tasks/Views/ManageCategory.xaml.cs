@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Tasks.Models;
 using Tasks.ViewModels;
 
 namespace Tasks.Views
@@ -21,11 +11,11 @@ namespace Tasks.Views
     public partial class ManageCategory : Window
     {
         string category;
-        string categorySelected;
 
         public ManageCategory()
         {
             InitializeComponent();
+            this.DataContext = Application.Current.MainWindow.DataContext;
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -43,9 +33,10 @@ namespace Tasks.Views
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            if(categorySelected != null)
+            if(categoryComboBox.SelectedItem != null)
             {
-                ((TreeViewVM)Application.Current.MainWindow.DataContext).RemoveCategory(category);
+                Models.Category category2 = categoryComboBox.SelectedItem as Category;
+                ((TreeViewVM)Application.Current.MainWindow.DataContext).RemoveCategory(category2.Name);
             }
             else
             {
@@ -55,19 +46,16 @@ namespace Tasks.Views
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            if(category != null || categorySelected != null)
+            if (category != null || categoryComboBox.SelectedItem != null)
             {
-                ((TreeViewVM)Application.Current.MainWindow.DataContext).EditCategory(categorySelected, category);
+                category = categoryTextBox.Text;
+                Category category2 = categoryComboBox.SelectedItem as Category;
+                ((TreeViewVM)Application.Current.MainWindow.DataContext).EditCategory(category2.Name, category);
             }
             else
             {
                 MessageBox.Show("Please enter and select a category!", "Warning", MessageBoxButton.OK);
             }
-        }
-
-        private void categoryComboBoxSelected(object sender, SelectionChangedEventArgs e)
-        {
-            categorySelected = categoryComboBox.SelectedItem as string;
         }
     }
 }
