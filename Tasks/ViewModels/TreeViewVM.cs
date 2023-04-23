@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media.Imaging;
 using Tasks.Models;
 
@@ -22,10 +23,11 @@ namespace Tasks.ViewModels
             }
         }
         public ObservableCollection<TDL> TDLs { get; set; }
+        public ObservableCollection<string> categories { get; set; } = new ObservableCollection<string>() { "Work", "Home", "Outside", "Shopping" };
 
         public TreeViewVM() 
         {
-            TDLs = new ObservableCollection<TDL>
+        TDLs = new ObservableCollection<TDL>
             {
                 new TDL
                 {
@@ -40,7 +42,7 @@ namespace Tasks.ViewModels
                     new Models.Task
                     {
                         Name = "c",
-                        Category = Category.Work,
+                        Category = categories[1],
                         Status = false,
                         DateOfFinish = new DateTime(2023, 4, 25),
                         Deadline = new DateTime(2023, 4, 26),
@@ -51,6 +53,25 @@ namespace Tasks.ViewModels
                 }
                 }
             };
+        }
+
+        public void AddCategory(string category)
+        {
+            categories.Add(category);
+            OnPropertyChanged(nameof(categories));
+        }
+
+        public void RemoveCategory(string category)
+        {
+            categories.Remove(category);
+            OnPropertyChanged(nameof(categories));
+        }
+
+        public void EditCategory(string categoryToSearch, string categoryToChange)
+        {
+            int index = categories.IndexOf(categoryToSearch);
+            categories[index] = categoryToChange;
+            OnPropertyChanged(nameof(categories));
         }
     }
 }

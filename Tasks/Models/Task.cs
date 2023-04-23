@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace Tasks.Models
 {
     //public enum Status { Created, InProgress, Done };
     public enum Type { Minor, Major }
-    public enum Category { Work, Home, Outside, Shopping }
+    //public enum Category { Work, Home, Outside, Shopping }
     public enum Priority { Low, Medium, High };
 
     public class Task : BaseVM
@@ -19,10 +20,21 @@ namespace Tasks.Models
         private string description;
         //private Status status;
         private Type type;
-        private Category category;
+        //private Category category;
         private Priority priority;
         private DateTime deadline;
         private DateTime dateOfFinish;
+        private string category;
+
+        public string Category
+        {
+            get { return category; }
+            set 
+            { 
+                category = value; 
+                OnPropertyChanged("Category");
+            }
+        }
 
         public string Name
         {
@@ -73,15 +85,15 @@ namespace Tasks.Models
             }
         }
 
-        public Category Category
-        {
-            get { return category; }
-            set
-            {
-                category = value;
-                OnPropertyChanged("Category");
-            }
-        }
+        //public Category Category
+        //{
+        //    get { return category; }
+        //    set
+        //    {
+        //        category = value;
+        //        OnPropertyChanged("Category");
+        //    }
+        //}
 
         public Priority Priority
         {

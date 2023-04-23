@@ -43,9 +43,9 @@
                 <MenuItem Header="Edit" Click="Edit_Click"/>
                 <MenuItem Header="Delete" Click="Delete_Click"/>
                 <MenuItem Header="Set Done" Click="SetDone_Click"/>
-                <MenuItem Header="Move Up"/>
-                <MenuItem Header="Move Down"/>
-                <MenuItem Header="Manage Category"/>
+                <MenuItem Header="Move Up" Click="MoveUp_Click"/>
+                <MenuItem Header="Move Down" Click="MoveDown_Click"/>
+                <MenuItem Header="Manage Category" Click="ManageCategory_Click"/>
                 <MenuItem Header="Find Task"/>
             </MenuItem>
             <MenuItem Header="View">

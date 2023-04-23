@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using Tasks.Models;
+using Tasks.ViewModels;
 using Tasks.Views;
 
 namespace Tasks
@@ -88,6 +89,70 @@ namespace Tasks
             {
                 MessageBox.Show("You did not select a Task!", "Warning", MessageBoxButton.OK);
             }
+        }
+
+        private void MoveUp_Click(object sender, RoutedEventArgs e)
+        {
+            TDL selectedItem = TDLTreeView.SelectedItem as TDL;
+            Task selectedTask = TaskListView.SelectedItem as Task;
+            if (selectedTask != null)
+            { 
+                int index = selectedItem.Tasks.IndexOf(selectedTask);
+                if (index > 0)
+                {
+                    Task auxiliaryTask = selectedItem.Tasks[index - 1];
+                    ListViewItem item = TaskListView.ItemContainerGenerator.ContainerFromItem(selectedItem.Tasks[index]) as ListViewItem;
+                    ListViewItem item2 = TaskListView.ItemContainerGenerator.ContainerFromItem(selectedItem.Tasks[index - 1]) as ListViewItem;
+                    selectedItem.Tasks[index - 1] = selectedTask;
+                    Brush brush = item.Background;
+                    item.Background = item2.Background;
+                    item2.Background = brush;
+                    selectedItem.Tasks[index] = auxiliaryTask;
+                }
+                else
+                {
+                    MessageBox.Show("Can't move anymore UP!", "Warning", MessageBoxButton.OK);
+                }
+            }
+            else
+            {
+                MessageBox.Show("You did not select a Task!", "Warning", MessageBoxButton.OK);
+            }
+        }
+
+        private void MoveDown_Click(object sender, RoutedEventArgs e)
+        {
+            TDL selectedItem = TDLTreeView.SelectedItem as TDL;
+            Task selectedTask = TaskListView.SelectedItem as Task;
+            if (selectedTask != null)
+            {
+                int index = selectedItem.Tasks.IndexOf(selectedTask);
+                if (index < selectedItem.Tasks.Count - 1)
+                {
+                    ListViewItem item = TaskListView.ItemContainerGenerator.ContainerFromItem(selectedItem.Tasks[index]) as ListViewItem;
+                    ListViewItem item2 = TaskListView.ItemContainerGenerator.ContainerFromItem(selectedItem.Tasks[index +1]) as ListViewItem;
+                    Brush brush = item.Background;
+                    item.Background = item2.Background;
+                    item2.Background = brush;
+                    Task auxiliaryTask = selectedItem.Tasks[index + 1];
+                    selectedItem.Tasks[index + 1] = selectedTask;
+                    selectedItem.Tasks[index] = auxiliaryTask;
+                }
+                else
+                {
+                    MessageBox.Show("Can't move anymore DOWN!", "Warning", MessageBoxButton.OK);
+                }
+            }
+            else
+            {
+                MessageBox.Show("You did not select a Task!", "Warning", MessageBoxButton.OK);
+            }
+        }
+
+        private void ManageCategory_Click(object sender, RoutedEventArgs e)
+        {
+            ManageCategory manageCategory = new ManageCategory();
+            manageCategory.Show();
         }
     }
 }

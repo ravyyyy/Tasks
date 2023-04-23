@@ -36,3 +36,5 @@ D:\Facultate\Anul II\Semestrul II\Medii vizuale de programare\Laboratoare\Tema2\
 D:\Facultate\Anul II\Semestrul II\Medii vizuale de programare\Laboratoare\Tema2\Tasks\Tasks\obj\Debug\Views\AddTask.baml
 D:\Facultate\Anul II\Semestrul II\Medii vizuale de programare\Laboratoare\Tema2\Tasks\Tasks\obj\Debug\Views\EditTask.g.cs
 D:\Facultate\Anul II\Semestrul II\Medii vizuale de programare\Laboratoare\Tema2\Tasks\Tasks\obj\Debug\Views\EditTask.baml
+D:\Facultate\Anul II\Semestrul II\Medii vizuale de programare\Laboratoare\Tema2\Tasks\Tasks\obj\Debug\Views\ManageCategory.g.cs
+D:\Facultate\Anul II\Semestrul II\Medii vizuale de programare\Laboratoare\Tema2\Tasks\Tasks\obj\Debug\Views\ManageCategory.baml

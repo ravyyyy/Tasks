@@ -62,23 +62,6 @@ namespace Tasks.Views
                 type2 = Models.Type.Major;
             }
             string category = categoryComboBox.Text;
-            Models.Category category2 = Models.Category.Work;
-            if (category == "Work")
-            {
-                category2 = Models.Category.Work;
-            }
-            if (category == "Home")
-            {
-                category2 = Models.Category.Home;
-            }
-            if (category == "Outside")
-            {
-                category2 = Models.Category.Outside;
-            }
-            if (category == "Shopping")
-            {
-                category2 = Models.Category.Shopping;
-            }
             string priority = priorityComboBox.Text;
             Models.Priority priority2 = Models.Priority.Low;
             if (priority == "Low")
@@ -110,7 +93,7 @@ namespace Tasks.Views
             task2.Status = status;
             task2.Deadline = deadline;
             task2.DateOfFinish = dateOfFinish;
-            task2.Category = category2;
+            task2.Category = category;
             task2.Priority = priority2;
             task2.Type = type2;
             tdl.Tasks[index] = task2;

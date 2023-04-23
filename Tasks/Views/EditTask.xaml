@@ -3,9 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Tasks.Views"
+        xmlns:local="clr-namespace:Tasks.Views" xmlns:ViewModels="clr-namespace:Tasks.ViewModels"
         mc:Ignorable="d"
         Title="EditTask" Height="450" Width="800">
+
+    <Window.DataContext>
+        <ViewModels:TreeViewVM/>
+    </Window.DataContext>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -34,11 +39,7 @@
             <ComboBoxItem Content="Major" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </ComboBox>
         <TextBlock Text="Category" Grid.Row="3" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <ComboBox x:Name="categoryComboBox" Grid.Row="3" Grid.Column="1">
-            <ComboBoxItem Content="Work" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <ComboBoxItem Content="Home" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <ComboBoxItem Content="Outside" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <ComboBoxItem Content="Shopping" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <ComboBox x:Name="categoryComboBox" Grid.Row="3" Grid.Column="1" ItemsSource="{Binding categories}">
         </ComboBox>
         <TextBlock Text="Priority" Grid.Row="4" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <ComboBox x:Name="priorityComboBox" Grid.Row="4" Grid.Column="1">
