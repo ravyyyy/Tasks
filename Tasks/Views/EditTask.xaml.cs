@@ -27,6 +27,7 @@ namespace Tasks.Views
         public EditTask(TDL tdl, Models.Task task, int index)
         {
             InitializeComponent();
+            this.DataContext = Application.Current.MainWindow.DataContext;
             this.tdl = tdl;
             this.task = task;
             this.index = index;

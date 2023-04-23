@@ -26,6 +26,7 @@ namespace Tasks.Views
         public AddTask(TDL tdl2)
         {
             InitializeComponent();
+            this.DataContext = Application.Current.MainWindow.DataContext;
             tdl = tdl2;
         }
 

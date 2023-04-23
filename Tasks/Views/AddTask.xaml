@@ -38,7 +38,8 @@
             <ComboBoxItem Content="Major" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </ComboBox>
         <TextBlock Text="Category" Grid.Row="3" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <ComboBox x:Name="categoryComboBox" Grid.Row="3" Grid.Column="1" ItemsSource="{Binding categories}">
+        <ComboBox x:Name="categoryComboBox" Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Categories}" DisplayMemberPath="Name"
+            SelectedValuePath="Name">
         </ComboBox>
         <TextBlock Text="Priority" Grid.Row="4" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <ComboBox x:Name="priorityComboBox" Grid.Row="4" Grid.Column="1">
