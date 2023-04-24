@@ -56,9 +56,9 @@
                 <MenuItem Header="Filter">
                     <MenuItem Header="Category" Click="Category_Click"/>
                     <MenuItem Header="Finished Tasks" Click="FinishedTasks_Click"/>
-                    <MenuItem Header="Overdue Tasks"/>
-                    <MenuItem Header="Tasks Unfinished and Overdue"/>
-                    <MenuItem Header="Tasks Unfinished and Future Deadline"/>
+                    <MenuItem Header="Overdue Tasks" Click="OverdueTasks_Click"/>
+                    <MenuItem Header="Tasks Unfinished and Overdue" Click="UnfinishedTasksOverdue_Click"/>
+                    <MenuItem Header="Tasks Unfinished and Future Deadline" Click="UnfinishedTasksDeadline_Click"/>
                 </MenuItem>
                 <MenuItem Header="Statistics" Click="Statistics_Click"/>
             </MenuItem>

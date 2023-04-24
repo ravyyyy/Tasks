@@ -227,5 +227,109 @@ namespace Tasks.ViewModels
             }
             return ints;
         }
+
+        public ObservableCollection<TDL> LoopThroughTDLFilter1(ObservableCollection<TDL> tdlCollection)
+        {
+            ObservableCollection<TDL> tdls = tdlCollection;
+
+            foreach (var tdl in tdls)
+            {
+                var tasksCopy = new List<Models.Task>(tdl.Tasks);
+
+                foreach (Models.Task task in tasksCopy)
+                {
+                    if (task.Status == false && task.Deadline > DateTime.Today)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        tdl.Tasks.Remove(task);
+                    }
+                }
+
+                if (tdl.ToDLs != null && tdl.ToDLs.Count > 0)
+                {
+                    LoopThroughTDLFilter1(tdl.ToDLs);
+                }
+            }
+
+            return tdls;
+        }
+
+        public ObservableCollection<TDL> LoopThroughTDLFilter2(ObservableCollection<TDL> tdlCollection)
+        {
+            ObservableCollection<TDL> tdls = tdlCollection;
+            foreach(var tdl in tdls)
+            {
+                var tasksCopy = new List<Models.Task>(tdl.Tasks);
+                foreach(Models.Task task in tasksCopy)
+                {
+                    if (task.Status == false && task.Deadline < DateTime.Today)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        tdl.Tasks.Remove(task);
+                    }
+                }
+                if(tdl.ToDLs != null && tdl.ToDLs.Count > 0)
+                {
+                    LoopThroughTDLFilter2(tdl.ToDLs);
+                }    
+            }
+            return tdls;
+        }
+
+        public ObservableCollection<TDL> LoopThroughTDLFilter3(ObservableCollection<TDL> tdlCollection)
+        {
+            ObservableCollection<TDL> tdls = tdlCollection;
+            foreach (var tdl in tdls)
+            {
+                var tasksCopy = new List<Models.Task>(tdl.Tasks);
+                foreach (Models.Task task in tasksCopy)
+                {
+                    if (task.Deadline < task.DateOfFinish)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        tdl.Tasks.Remove(task);
+                    }
+                }
+                if (tdl.ToDLs != null && tdl.ToDLs.Count > 0)
+                {
+                    LoopThroughTDLFilter3(tdl.ToDLs);
+                }
+            }
+            return tdls;
+        }
+
+        public ObservableCollection<TDL> LoopThroughTDLFilter4(ObservableCollection<TDL> tdlCollection)
+        {
+            ObservableCollection<TDL> tdls = tdlCollection;
+            foreach (var tdl in tdls)
+            {
+                var tasksCopy = new List<Models.Task>(tdl.Tasks);
+                foreach (Models.Task task in tasksCopy)
+                {
+                    if (task.Status == true)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        tdl.Tasks.Remove(task);
+                    }
+                }
+                if (tdl.ToDLs != null && tdl.ToDLs.Count > 0)
+                {
+                    LoopThroughTDLFilter4(tdl.ToDLs);
+                }
+            }
+            return tdls;
+        }
     }
 }

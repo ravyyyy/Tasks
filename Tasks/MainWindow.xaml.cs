@@ -223,7 +223,11 @@ namespace Tasks
 
         private void FinishedTasks_Click(object sender, RoutedEventArgs e)
         {
-
+            TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
+            if (treeViewVM != null)
+            {
+                treeViewVM.TDLs = treeViewVM.LoopThroughTDLFilter4(treeViewVM.TDLs);
+            }
         }
 
         private void Statistics_Click(object sender, RoutedEventArgs e)
@@ -251,6 +255,33 @@ namespace Tasks
                 treeViewVM.selectedTask = selectedTask;
                 TDL selectedTDL = TDLTreeView.SelectedItem as TDL;
                 treeViewVM.selectedTdl = selectedTDL;
+            }
+        }
+
+        private void UnfinishedTasksDeadline_Click(object sender, RoutedEventArgs e)
+        {
+            TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
+            if(treeViewVM != null)
+            {
+                treeViewVM.TDLs = treeViewVM.LoopThroughTDLFilter1(treeViewVM.TDLs);
+            }
+        }
+
+        private void UnfinishedTasksOverdue_Click(object sender, RoutedEventArgs e)
+        {
+            TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
+            if(treeViewVM != null)
+            {
+                treeViewVM.TDLs = treeViewVM.LoopThroughTDLFilter2(treeViewVM.TDLs);
+            }    
+        }
+
+        private void OverdueTasks_Click(object sender, RoutedEventArgs e)
+        {
+            TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
+            if (treeViewVM != null)
+            {
+                treeViewVM.TDLs = treeViewVM.LoopThroughTDLFilter3(treeViewVM.TDLs);
             }
         }
     }
