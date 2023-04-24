@@ -12,6 +12,7 @@ namespace Tasks.ViewModels
     public class TreeViewVM : Models.BaseVM
     {
         public Models.Task selectedTask;
+        public int index;
         public TDL selectedTdl;
         private TDL tdl;
         public TDL TDL
@@ -25,6 +26,7 @@ namespace Tasks.ViewModels
         }
         public ObservableCollection<TDL> TDLs { get; set; }
         public ObservableCollection<KeyValuePair<string, TDL>> pairs { get; set; }
+        //public ObservableCollection<TDL> TDLsCopy { get; set; }
 
         public ObservableCollection<int> ints {  get; set; }
 
@@ -58,6 +60,7 @@ namespace Tasks.ViewModels
 
         public TreeViewVM() 
         {
+            index = 0;
             selectedTdl = new TDL();
             selectedTask = new Models.Task();
             moveUpCommand = new MoveUpCommand(this);
@@ -110,6 +113,10 @@ namespace Tasks.ViewModels
                         }
                     }
                 } },
+                    new TDL
+                {
+                    Name = "x",
+                },
                 },
                     Tasks = new ObservableCollection<Models.Task>
                 {
@@ -126,9 +133,10 @@ namespace Tasks.ViewModels
                     }
                 }
                 },
+                
                 new TDL
                 {
-                    Name = "a",
+                    Name = "d",
                     Image = new BitmapImage(new Uri(@"/Images/home.png", UriKind.Relative)),
                     ToDLs = new ObservableCollection<TDL>
                 {
@@ -162,6 +170,7 @@ namespace Tasks.ViewModels
                 }
                 }
             };
+            //TDLsCopy = new ObservableCollection<TDL>(TDLs.ToList());
         }
 
         public void AddCategory(string category)
@@ -355,6 +364,23 @@ namespace Tasks.ViewModels
                 }
             }
             return tdls;
+        }
+
+        public int GetIndex(ObservableCollection<TDL> tDLs, TDL tdl2)
+        {
+            for(int i =0;i<tDLs.Count;i++)
+            {
+                if (tDLs[i].Name == tdl2.Name)
+                {
+                    index = i;
+                    break;
+                }
+                if(tDLs[i].ToDLs != null && tDLs[i].ToDLs.Count > 0)
+                {
+                    index = GetIndex(tDLs[i].ToDLs, tdl2);
+                }
+            }
+            return index;
         }
     }
 }

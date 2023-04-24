@@ -34,8 +34,8 @@
                 <MenuItem Header="Add Sub-TDL"/>
                 <MenuItem Header="Edit"/>
                 <MenuItem Header="Delete"/>
-                <MenuItem Header="Move Up"/>
-                <MenuItem Header="Move Down"/>
+                <MenuItem Header="Move Up" Click="MoveUpTDL_Click"/>
+                <MenuItem Header="Move Down" Click="MoveDownTDL_Click"/>
                 <MenuItem Header="Change Path"/>
             </MenuItem>
             <MenuItem Header="Task">

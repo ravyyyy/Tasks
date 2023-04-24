@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -221,6 +222,7 @@ namespace Tasks
             TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
             if (treeViewVM != null)
             {
+                //treeViewVM.TDLs = treeViewVM.TDLsCopy;
                 treeViewVM.TDLs = treeViewVM.LoopThroughTDLFilter4(treeViewVM.TDLs);
             }
         }
@@ -248,6 +250,7 @@ namespace Tasks
             {
                 Task selectedTask = TaskListView.SelectedItem as Task;
                 treeViewVM.selectedTask = selectedTask;
+                //treeViewVM.TDLs = treeViewVM.TDLsCopy;
                 TDL selectedTDL = TDLTreeView.SelectedItem as TDL;
                 treeViewVM.selectedTdl = selectedTDL;
             }
@@ -258,6 +261,7 @@ namespace Tasks
             TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
             if(treeViewVM != null)
             {
+                //treeViewVM.TDLs = treeViewVM.TDLsCopy;
                 treeViewVM.TDLs = treeViewVM.LoopThroughTDLFilter1(treeViewVM.TDLs);
             }
         }
@@ -267,6 +271,7 @@ namespace Tasks
             TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
             if(treeViewVM != null)
             {
+                //treeViewVM.TDLs = treeViewVM.TDLsCopy;
                 treeViewVM.TDLs = treeViewVM.LoopThroughTDLFilter2(treeViewVM.TDLs);
             }    
         }
@@ -276,6 +281,7 @@ namespace Tasks
             TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
             if (treeViewVM != null)
             {
+                //treeViewVM.TDLs = treeViewVM.TDLsCopy;
                 treeViewVM.TDLs = treeViewVM.LoopThroughTDLFilter3(treeViewVM.TDLs);
             }
         }
@@ -287,7 +293,56 @@ namespace Tasks
             {
                 MenuItem menuItem = sender as MenuItem;
                 Category category = menuItem.DataContext as Category;
+                //treeViewVM.TDLs = treeViewVM.TDLsCopy;
                 treeViewVM.TDLs = treeViewVM.LoopThroughTDLFilter5(treeViewVM.TDLs, category);
+            }
+        }
+
+        private void MoveUpTDL_Click(object sender, RoutedEventArgs e)
+        {
+            TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
+            TDL selectedTDL = TDLTreeView.SelectedItem as TDL;
+            if (treeViewVM != null && selectedTDL != null)
+            {
+                int indexTDL = treeViewVM.GetIndex(treeViewVM.TDLs, selectedTDL);
+                if(indexTDL > 0)
+                {
+                    TDL auxiliaryTDL = treeViewVM.TDLs[indexTDL - 1];
+                    treeViewVM.TDLs[indexTDL - 1] = selectedTDL;
+                    treeViewVM.TDLs[indexTDL] = auxiliaryTDL;
+                }
+                else
+                {
+                    MessageBox.Show("TDL can not move UP!", "Warning", MessageBoxButton.OK);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a TDL!", "Warning", MessageBoxButton.OK);
+            }
+        }
+
+        private void MoveDownTDL_Click(object sender, RoutedEventArgs e)
+        {
+            TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
+            TDL selectedTDL = TDLTreeView.SelectedItem as TDL;
+            if (treeViewVM != null && selectedTDL != null)
+            {
+                int indexTDL = treeViewVM.GetIndex(treeViewVM.TDLs, selectedTDL);
+                if (indexTDL < selectedTDL.ToDLs.Count - 1)
+                {
+                    TDL auxiliaryTDL = treeViewVM.TDLs[indexTDL + 1];
+                    treeViewVM.TDLs[indexTDL + 1] = selectedTDL;
+                    treeViewVM.TDLs[indexTDL] = auxiliaryTDL;
+                }
+                else
+                {
+                    MessageBox.Show("TDL can not move DOWN!", "Warning", MessageBoxButton.OK);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a TDL!", "Warning", MessageBoxButton.OK);
             }
         }
     }
