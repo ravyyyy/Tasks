@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
+using System.Windows.Input;
 using System.Windows.Media;
+using Tasks.Commands;
 using Tasks.Models;
 using Tasks.ViewModels;
 using Tasks.Views;
@@ -92,33 +90,33 @@ namespace Tasks
             }
         }
 
-        private void MoveUp_Click(object sender, RoutedEventArgs e)
-        {
-            TDL selectedItem = TDLTreeView.SelectedItem as TDL;
-            if (TaskListView.SelectedItem is Models.Task selectedTask)
-            {
-                int index = selectedItem.Tasks.IndexOf(selectedTask);
-                if (index > 0)
-                {
-                    Task auxiliaryTask = selectedItem.Tasks[index - 1];
-                    ListViewItem item = TaskListView.ItemContainerGenerator.ContainerFromItem(selectedItem.Tasks[index]) as ListViewItem;
-                    ListViewItem item2 = TaskListView.ItemContainerGenerator.ContainerFromItem(selectedItem.Tasks[index - 1]) as ListViewItem;
-                    selectedItem.Tasks[index - 1] = selectedTask;
-                    Brush brush = item.Background;
-                    item.Background = item2.Background;
-                    item2.Background = brush;
-                    selectedItem.Tasks[index] = auxiliaryTask;
-                }
-                else
-                {
-                    MessageBox.Show("Can't move anymore UP!", "Warning", MessageBoxButton.OK);
-                }
-            }
-            else
-            {
-                MessageBox.Show("You did not select a Task!", "Warning", MessageBoxButton.OK);
-            }
-        }
+        //private void MoveUp_Click(object sender, RoutedEventArgs e)
+        //{
+        //    TDL selectedItem = TDLTreeView.SelectedItem as TDL;
+        //    if (TaskListView.SelectedItem is Models.Task selectedTask)
+        //    {
+        //        int index = selectedItem.Tasks.IndexOf(selectedTask);
+        //        if (index > 0)
+        //        {
+        //            Task auxiliaryTask = selectedItem.Tasks[index - 1];
+        //            ListViewItem item = TaskListView.ItemContainerGenerator.ContainerFromItem(selectedItem.Tasks[index]) as ListViewItem;
+        //            ListViewItem item2 = TaskListView.ItemContainerGenerator.ContainerFromItem(selectedItem.Tasks[index - 1]) as ListViewItem;
+        //            selectedItem.Tasks[index - 1] = selectedTask;
+        //            Brush brush = item.Background;
+        //            item.Background = item2.Background;
+        //            item2.Background = brush;
+        //            selectedItem.Tasks[index] = auxiliaryTask;
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Can't move anymore UP!", "Warning", MessageBoxButton.OK);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("You did not select a Task!", "Warning", MessageBoxButton.OK);
+        //    }
+        //}
 
         private void MoveDown_Click(object sender, RoutedEventArgs e)
         {
@@ -237,11 +235,23 @@ namespace Tasks
             tasksOverdueText.Text = ints[2].ToString();
             tasksDoneText.Text = ints[3].ToString();
             tasksToBeDoneText.Text = ints[4].ToString();
-            for(int i =0;i<ints.Count;i++)
+            for(int i = 0;i < ints.Count; i++)
             {
                 ints[i] = 0;
             }
             treeViewVM.ints = ints;
+        }
+
+        private void TaskListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
+            if(treeViewVM != null)
+            {
+                Task selectedTask = TaskListView.SelectedItem as Task;
+                treeViewVM.selectedTask = selectedTask;
+                TDL selectedTDL = TDLTreeView.SelectedItem as TDL;
+                treeViewVM.selectedTdl = selectedTDL;
+            }
         }
     }
 }

@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using Tasks.Commands;
 using Tasks.Models;
 
 namespace Tasks.ViewModels
 {
     public class TreeViewVM : Models.BaseVM
     {
+        public Models.Task selectedTask;
+        public TDL selectedTdl;
         private TDL tdl;
         public TDL TDL
         {
@@ -24,8 +28,18 @@ namespace Tasks.ViewModels
 
         public ObservableCollection<int> ints {  get; set; }
 
-        private ObservableCollection<Category> categories = new ObservableCollection<Category>() 
-        { 
+        private MoveUpCommand moveUpCommand;
+
+        public ICommand MoveUpCommand
+        {
+            get
+            {
+                return moveUpCommand;
+            }
+        }
+
+        private ObservableCollection<Category> categories = new ObservableCollection<Category>()
+        {
             new Category() { Name = "Work" },
             new Category() { Name = "Home" },
             new Category() { Name = "School" },
@@ -44,6 +58,9 @@ namespace Tasks.ViewModels
 
         public TreeViewVM() 
         {
+            selectedTdl = new TDL();
+            selectedTask = new Models.Task();
+            moveUpCommand = new MoveUpCommand(this);
             ints = new ObservableCollection<int>();
             for (int i = 0; i < 5; i++)
             {

@@ -43,7 +43,7 @@
                 <MenuItem Header="Edit" Click="Edit_Click"/>
                 <MenuItem Header="Delete" Click="Delete_Click"/>
                 <MenuItem Header="Set Done" Click="SetDone_Click"/>
-                <MenuItem Header="Move Up" Click="MoveUp_Click"/>
+                <MenuItem Header="Move Up" Command="{Binding MoveUpCommand}"/>
                 <MenuItem Header="Move Down" Click="MoveDown_Click"/>
                 <MenuItem Header="Manage Category" Click="ManageCategory_Click"/>
                 <MenuItem Header="Find Task" Click="FindTask_Click"/>
@@ -78,7 +78,8 @@
             </TreeView.ItemTemplate>
         </TreeView>
 
-        <ListView Name="TaskListView" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SelectedItem.Tasks, ElementName=TDLTreeView}">
+        <ListView Name="TaskListView" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SelectedItem.Tasks, ElementName=TDLTreeView}"
+                   SelectionChanged="TaskListView_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridView.ColumnHeaderContainerStyle>

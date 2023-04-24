@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\MoveUpCommand.cs" />
     <Compile Include="Models\BaseVM.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="ViewModels\TaskViewModel.cs" />
@@ -138,8 +139,6 @@
     <Resource Include="Images\shopping.png" />
     <Resource Include="Images\work.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
