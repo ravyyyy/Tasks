@@ -69,6 +69,9 @@
     <Compile Include="Views\ManageCategory.xaml.cs">
       <DependentUpon>ManageCategory.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SearchTask.xaml.cs">
+      <DependentUpon>SearchTask.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -90,6 +93,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ManageCategory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SearchTask.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -122,7 +129,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\find_task.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\home.png" />
     <Resource Include="Images\outisde.png" />

@@ -156,5 +156,21 @@ namespace Tasks
             ManageCategory manageCategory = new ManageCategory(tdls);
             manageCategory.Show();
         }
+
+        private void FindTask_Click(object sender, RoutedEventArgs e)
+        {
+            TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
+            ObservableCollection<TDL> tdls = treeViewVM.TDLs;
+            TDL selectedTdl = TDLTreeView.SelectedItem as TDL;
+            if(selectedTdl != null) 
+            {
+                SearchTask searchTask = new SearchTask(treeViewVM.pairs, selectedTdl, tdls);
+                searchTask.Show();
+            }
+            else
+            {
+                MessageBox.Show("You did not select a view!", "Warning", MessageBoxButton.OK);
+            }
+        }
     }
 }

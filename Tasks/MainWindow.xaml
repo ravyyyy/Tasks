@@ -46,7 +46,7 @@
                 <MenuItem Header="Move Up" Click="MoveUp_Click"/>
                 <MenuItem Header="Move Down" Click="MoveDown_Click"/>
                 <MenuItem Header="Manage Category" Click="ManageCategory_Click"/>
-                <MenuItem Header="Find Task"/>
+                <MenuItem Header="Find Task" Click="FindTask_Click"/>
             </MenuItem>
             <MenuItem Header="View">
                 <MenuItem Header="Sort"/>

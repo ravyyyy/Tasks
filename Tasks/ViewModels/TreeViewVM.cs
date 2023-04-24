@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Media.Imaging;
@@ -19,6 +20,7 @@ namespace Tasks.ViewModels
             }
         }
         public ObservableCollection<TDL> TDLs { get; set; }
+        public ObservableCollection<KeyValuePair<string, TDL>> pairs { get; set; }
         private ObservableCollection<Category> categories = new ObservableCollection<Category>() 
         { 
             new Category() { Name = "Work" },
@@ -39,6 +41,7 @@ namespace Tasks.ViewModels
 
         public TreeViewVM() 
         {
+            pairs = new ObservableCollection<KeyValuePair<string, TDL>>();
         TDLs = new ObservableCollection<TDL>
             {
                 new TDL
