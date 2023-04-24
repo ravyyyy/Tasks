@@ -345,5 +345,19 @@ namespace Tasks
                 MessageBox.Show("Please select a TDL!", "Warning", MessageBoxButton.OK);
             }
         }
+
+        private void DeleteTDL_Click(object sender, RoutedEventArgs e)
+        {
+            TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
+            TDL selectedTDL = TDLTreeView.SelectedItem as TDL;
+            if(treeViewVM != null && selectedTDL != null)
+            {
+                treeViewVM.TDLs = treeViewVM.DeleteTDL(treeViewVM.TDLs, selectedTDL);
+            }
+            else
+            {
+                MessageBox.Show("Please select a TDL!", "Warning", MessageBoxButton.OK);
+            }    
+        }
     }
 }

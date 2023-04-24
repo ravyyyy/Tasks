@@ -382,5 +382,22 @@ namespace Tasks.ViewModels
             }
             return index;
         }
+
+        public ObservableCollection<TDL> DeleteTDL(ObservableCollection<TDL> tDLs, TDL selectedTDL)
+        {
+            foreach(TDL tdl in tDLs)
+            {
+                if(tdl == selectedTDL)
+                {
+                    tDLs.Remove(tdl);
+                    break;
+                }
+                if(tdl.ToDLs != null && tdl.ToDLs.Count > 0)
+                {
+                    DeleteTDL(tdl.ToDLs, selectedTDL);
+                }
+            }
+            return tDLs;
+        }
     }
 }

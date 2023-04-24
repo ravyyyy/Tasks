@@ -33,7 +33,7 @@
                 <MenuItem Header="Add Root TDL"/>
                 <MenuItem Header="Add Sub-TDL"/>
                 <MenuItem Header="Edit"/>
-                <MenuItem Header="Delete"/>
+                <MenuItem Header="Delete" Click="DeleteTDL_Click"/>
                 <MenuItem Header="Move Up" Click="MoveUpTDL_Click"/>
                 <MenuItem Header="Move Down" Click="MoveDownTDL_Click"/>
                 <MenuItem Header="Change Path"/>
