@@ -21,6 +21,9 @@ namespace Tasks.ViewModels
         }
         public ObservableCollection<TDL> TDLs { get; set; }
         public ObservableCollection<KeyValuePair<string, TDL>> pairs { get; set; }
+
+        public ObservableCollection<int> ints {  get; set; }
+
         private ObservableCollection<Category> categories = new ObservableCollection<Category>() 
         { 
             new Category() { Name = "Work" },
@@ -41,8 +44,13 @@ namespace Tasks.ViewModels
 
         public TreeViewVM() 
         {
+            ints = new ObservableCollection<int>();
+            for (int i = 0; i < 5; i++)
+            {
+                ints.Add(0);
+            }
             pairs = new ObservableCollection<KeyValuePair<string, TDL>>();
-        TDLs = new ObservableCollection<TDL>
+            TDLs = new ObservableCollection<TDL>
             {
                 new TDL
                 {
@@ -62,7 +70,29 @@ namespace Tasks.ViewModels
                         Priority = Priority.High,
                         Type = Models.Type.Minor
                     }
-                }, ToDLs = new ObservableCollection<TDL>()},
+                }, ToDLs = new ObservableCollection<TDL>
+                {
+                    new TDL
+                    {
+                        Name = "b",
+                        Image = new BitmapImage(new Uri(@"/Images/home.png", UriKind.Relative)),
+                        ToDLs = new ObservableCollection<TDL>(),
+                        Tasks = new ObservableCollection<Models.Task>
+                        {
+                            new Models.Task
+                            {
+                                Name = "e",
+                        Category = categories[2].Name,
+                        Status = false,
+                        DateOfFinish = new DateTime(2023, 4, 25),
+                        Deadline = new DateTime(2023, 4, 26),
+                        Description = "o scurta descriere",
+                        Priority = Priority.High,
+                        Type = Models.Type.Minor
+                            }
+                        }
+                    }
+                } },
                 },
                     Tasks = new ObservableCollection<Models.Task>
                 {
@@ -144,6 +174,41 @@ namespace Tasks.ViewModels
         public void EditTaskCategory(Task task, string category)
         {
             task.Category = category;
+        }
+
+        public ObservableCollection<int> LoopThroughAllTDLs(ObservableCollection<TDL> tdlCollection)
+        {
+            foreach(var tdl in tdlCollection)
+            {
+                foreach (Models.Task task in tdl.Tasks)
+                {
+                    if (task.Deadline == DateTime.Today)
+                    {
+                        ints[0]++;
+                    }
+                    if (task.Deadline == DateTime.Today.AddDays(1))
+                    {
+                        ints[1]++;
+                    }
+                    if (task.Deadline < DateTime.Today)
+                    {
+                        ints[2]++;
+                    }
+                    if (task.Status == true)
+                    {
+                        ints[3]++;
+                    }
+                    if (task.Status == false)
+                    {
+                        ints[4]++;
+                    }
+                }
+                if (tdl.ToDLs != null && tdl.ToDLs.Count > 0)
+                {
+                    LoopThroughAllTDLs(tdl.ToDLs);
+                }
+            }
+            return ints;
         }
     }
 }

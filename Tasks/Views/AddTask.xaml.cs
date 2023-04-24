@@ -70,15 +70,17 @@ namespace Tasks.Views
             {
                 status = false;
             }
-            Models.Task task = new Models.Task();
-            task.Name = name;
-            task.Description = description;
-            task.Status = status;
-            task.Deadline = deadline;
-            task.DateOfFinish = dateOfFinish;
-            task.Category = category;
-            task.Priority = priority2;
-            task.Type = type2;
+            Models.Task task = new Models.Task
+            {
+                Name = name,
+                Description = description,
+                Status = status,
+                Deadline = deadline,
+                DateOfFinish = dateOfFinish,
+                Category = category,
+                Priority = priority2,
+                Type = type2
+            };
             tdl.Tasks.Add(task);
             this.Close();
         }

@@ -1,6 +1,11 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
 using Tasks.Models;
 using Tasks.ViewModels;
@@ -25,8 +30,7 @@ namespace Tasks
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            TDL selectedItem = TDLTreeView.SelectedItem as TDL;
-            if (selectedItem != null)
+            if (TDLTreeView.SelectedItem is TDL selectedItem)
             {
                 AddTask addTask = new AddTask(selectedItem);
                 addTask.Show();
@@ -48,8 +52,7 @@ namespace Tasks
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
             TDL selectedItem = TDLTreeView.SelectedItem as TDL;
-            Task selectedTask = TaskListView.SelectedItem as Task;
-            if (selectedTask != null)
+            if (TaskListView.SelectedItem is Models.Task selectedTask)
             {
                 int index = selectedItem.Tasks.IndexOf(selectedTask);
                 EditTask editTask = new EditTask(selectedItem, selectedTask, index);
@@ -64,8 +67,7 @@ namespace Tasks
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             TDL selectedItem = TDLTreeView.SelectedItem as TDL;
-            Task selectedTask = TaskListView.SelectedItem as Task;
-            if (selectedTask != null)
+            if (TaskListView.SelectedItem is Models.Task selectedTask)
             {
                 selectedItem.Tasks.Remove(selectedTask);
             }
@@ -77,8 +79,7 @@ namespace Tasks
 
         private void SetDone_Click(object sender, RoutedEventArgs e)
         {
-            Task selectedTask = TaskListView.SelectedItem as Task;
-            if (selectedTask != null)
+            if (TaskListView.SelectedItem is Models.Task selectedTask)
             {
                 selectedTask.Status = true;
                 SolidColorBrush brush = new SolidColorBrush(Colors.Green);
@@ -94,9 +95,8 @@ namespace Tasks
         private void MoveUp_Click(object sender, RoutedEventArgs e)
         {
             TDL selectedItem = TDLTreeView.SelectedItem as TDL;
-            Task selectedTask = TaskListView.SelectedItem as Task;
-            if (selectedTask != null)
-            { 
+            if (TaskListView.SelectedItem is Models.Task selectedTask)
+            {
                 int index = selectedItem.Tasks.IndexOf(selectedTask);
                 if (index > 0)
                 {
@@ -123,14 +123,13 @@ namespace Tasks
         private void MoveDown_Click(object sender, RoutedEventArgs e)
         {
             TDL selectedItem = TDLTreeView.SelectedItem as TDL;
-            Task selectedTask = TaskListView.SelectedItem as Task;
-            if (selectedTask != null)
+            if (TaskListView.SelectedItem is Models.Task selectedTask)
             {
                 int index = selectedItem.Tasks.IndexOf(selectedTask);
                 if (index < selectedItem.Tasks.Count - 1)
                 {
                     ListViewItem item = TaskListView.ItemContainerGenerator.ContainerFromItem(selectedItem.Tasks[index]) as ListViewItem;
-                    ListViewItem item2 = TaskListView.ItemContainerGenerator.ContainerFromItem(selectedItem.Tasks[index +1]) as ListViewItem;
+                    ListViewItem item2 = TaskListView.ItemContainerGenerator.ContainerFromItem(selectedItem.Tasks[index + 1]) as ListViewItem;
                     Brush brush = item.Background;
                     item.Background = item2.Background;
                     item2.Background = brush;
@@ -161,8 +160,7 @@ namespace Tasks
         {
             TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
             ObservableCollection<TDL> tdls = treeViewVM.TDLs;
-            TDL selectedTdl = TDLTreeView.SelectedItem as TDL;
-            if(selectedTdl != null) 
+            if (TDLTreeView.SelectedItem is TDL selectedTdl)
             {
                 SearchTask searchTask = new SearchTask(treeViewVM.pairs, selectedTdl, tdls);
                 searchTask.Show();
@@ -171,6 +169,79 @@ namespace Tasks
             {
                 MessageBox.Show("You did not select a view!", "Warning", MessageBoxButton.OK);
             }
+        }
+
+        private void Deadline_Click(object sender, RoutedEventArgs e)
+        {
+            TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
+            foreach (TDL tdl in treeViewVM.TDLs)
+            {
+                tdl.Tasks = new ObservableCollection<Task>(tdl.Tasks.OrderBy(t => t.Deadline));
+            }
+            TaskListView.ItemsSource = treeViewVM.TDLs;
+        }
+
+        private void Priority_Click(object sender, RoutedEventArgs e)
+        {
+            TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
+            foreach (TDL tdl in treeViewVM.TDLs)
+            {
+                ObservableCollection<Models.Task> lowTaks = new ObservableCollection<Models.Task>();
+                ObservableCollection<Models.Task> mediumTaks = new ObservableCollection<Models.Task>();
+                ObservableCollection<Models.Task> highTaks = new ObservableCollection<Models.Task>();
+                foreach(Models.Task task in tdl.Tasks)
+                {
+                    if(task.Priority == Models.Priority.Low)
+                    {
+                        lowTaks.Add(task);
+                    }
+                    else if(task.Priority == Models.Priority.Medium)
+                    {
+                        mediumTaks.Add(task);
+                    }
+                    else
+                    {
+                        highTaks.Add(task);
+                    }
+                }
+                tdl.Tasks.Clear();
+                tdl.Tasks = lowTaks;
+                foreach (Models.Task task in mediumTaks)
+                {
+                    tdl.Tasks.Add(task);
+                }
+                foreach (Models.Task task in highTaks)
+                {
+                    tdl.Tasks.Add(task);
+                }
+            }
+            TaskListView.ItemsSource = treeViewVM.TDLs;
+        }
+
+        private void Category_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void FinishedTasks_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Statistics_Click(object sender, RoutedEventArgs e)
+        {
+            TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
+            ObservableCollection<int> ints = treeViewVM.LoopThroughAllTDLs(treeViewVM.TDLs);
+            tasksDueTodayText.Text = ints[0].ToString();
+            tasksDueTomorrowText.Text = ints[1].ToString();
+            tasksOverdueText.Text = ints[2].ToString();
+            tasksDoneText.Text = ints[3].ToString();
+            tasksToBeDoneText.Text = ints[4].ToString();
+            for(int i =0;i<ints.Count;i++)
+            {
+                ints[i] = 0;
+            }
+            treeViewVM.ints = ints;
         }
     }
 }

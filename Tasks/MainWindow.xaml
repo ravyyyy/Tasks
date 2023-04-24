@@ -49,9 +49,18 @@
                 <MenuItem Header="Find Task" Click="FindTask_Click"/>
             </MenuItem>
             <MenuItem Header="View">
-                <MenuItem Header="Sort"/>
-                <MenuItem Header="Filter"/>
-                <MenuItem Header="Statistics"/>
+                <MenuItem Header="Sort">
+                    <MenuItem Header="Deadline" Click="Deadline_Click"/>
+                    <MenuItem Header="Priority" Click="Priority_Click"/>
+                </MenuItem>
+                <MenuItem Header="Filter">
+                    <MenuItem Header="Category" Click="Category_Click"/>
+                    <MenuItem Header="Finished Tasks" Click="FinishedTasks_Click"/>
+                    <MenuItem Header="Overdue Tasks"/>
+                    <MenuItem Header="Tasks Unfinished and Overdue"/>
+                    <MenuItem Header="Tasks Unfinished and Future Deadline"/>
+                </MenuItem>
+                <MenuItem Header="Statistics" Click="Statistics_Click"/>
             </MenuItem>
             <MenuItem Header="Help">
                 <MenuItem Header="About" Click="Help_Click"/>
@@ -111,10 +120,15 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Label Grid.Column="0" Grid.Row="0" Content="Tasks due today: "/>
+            <TextBlock Grid.Column="1" Grid.Row="0" x:Name="tasksDueTodayText" HorizontalAlignment="Center" VerticalAlignment="Center">0</TextBlock>
             <Label Grid.Column="0" Grid.Row="1" Content="Tasks due tomorrow: "/>
+            <TextBlock Grid.Column="1" Grid.Row="1" x:Name="tasksDueTomorrowText" HorizontalAlignment="Center" VerticalAlignment="Center">0</TextBlock>
             <Label Grid.Column="0" Grid.Row="2" Content="Tasks overdue: "/>
+            <TextBlock Grid.Column="1" Grid.Row="2" x:Name="tasksOverdueText" HorizontalAlignment="Center" VerticalAlignment="Center">0</TextBlock>
             <Label Grid.Column="0" Grid.Row="3" Content="Tasks done: "/>
+            <TextBlock Grid.Column="1" Grid.Row="3" x:Name="tasksDoneText" HorizontalAlignment="Center" VerticalAlignment="Center">0</TextBlock>
             <Label Grid.Column="0" Grid.Row="4" Content="Tasks to be done: "/>
+            <TextBlock Grid.Column="1" Grid.Row="4" x:Name="tasksToBeDoneText" HorizontalAlignment="Center" VerticalAlignment="Center">0</TextBlock>
         </Grid>
 
         <Border Grid.Row="2" Grid.Column="1" BorderThickness="1" BorderBrush="Black">
