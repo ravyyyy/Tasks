@@ -22,6 +22,8 @@ namespace Tasks.Views
     /// </summary>
     public partial class SearchTask : Window
     {
+        int count {  get; set; }
+        string taskName { get; set; }
         BitmapImage image = new BitmapImage(new Uri(@"/Images/find_task.png", UriKind.Relative));
         public ObservableCollection<string> tasks { get; set; }
         //public ObservableCollection<TDL> tdlsLocations { get; set; }
@@ -32,6 +34,7 @@ namespace Tasks.Views
         public SearchTask(ObservableCollection<KeyValuePair<string, TDL>> pairs, TDL selectedTdl, ObservableCollection<TDL> tdls)
         {
             InitializeComponent();
+            count = 0;
             imageSource.Source = image;
             this.tdls = tdls;
             this.selectedTdl = selectedTdl;
@@ -46,52 +49,50 @@ namespace Tasks.Views
             this.Close();
         }
 
-        private void FindButton_Click(object sender, RoutedEventArgs e)
+        public ObservableCollection<KeyValuePair<string, TDL>> GetPairs(ObservableCollection<TDL> ToDoLists)
         {
-            int count = 0;
-            string taskName = findTaskTextBox.Text;
-            pairs.Clear();
-            if(findTaskCheckBox.IsChecked == false)
+            taskName = findTaskTextBox.Text;
+            if (findTaskCheckBox.IsChecked == false)
             {
-                foreach(TDL tdl in tdls)
+                foreach (var tdl in ToDoLists)
                 {
-                    if(tdl.ToDLs != null)
+                    foreach (var task in tdl.Tasks)
                     {
-                        foreach(TDL tdl2 in tdl.ToDLs)
+                        if (task.Name == taskName)
                         {
-                            foreach(Models.Task task2 in tdl2.Tasks)
-                            {
-                                if(task2.Name == taskName)
-                                {
-                                    pairs.Add(new KeyValuePair<string, TDL>(taskName, tdl2));
-                                }
-                            }    
-                        }
-                    }
-                    foreach(Models.Task task in tdl.Tasks)
-                    {
-                        if(task.Name == taskName)
-                        {
-                            //tasks.Add(taskName);
-                            //tdlsLocations.Add(tdl);
                             pairs.Add(new KeyValuePair<string, TDL>(taskName, tdl));
                         }
+                    }
+                    if(tdl.ToDLs != null && tdl.ToDLs.Count > 0)
+                    {
+                        GetPairs(tdl.ToDLs);
                     }
                 }
             }
             else
             {
-                foreach(Models.Task task in selectedTdl.Tasks)
+                foreach (var tdl in ToDoLists)
                 {
-                    if(task.Name == taskName)
+                    foreach (var task in tdl.Tasks)
                     {
-                        //tasks.Add(taskName);
-                        //tdlsLocations.Add(selectedTdl);
-                        pairs.Add(new KeyValuePair<string, TDL>(taskName, selectedTdl));
-
+                        if (task.Name == taskName && tdl == selectedTdl)
+                        {
+                            pairs.Add(new KeyValuePair<string, TDL>(taskName, selectedTdl));
+                        }
+                    }
+                    if (tdl.ToDLs != null && tdl.ToDLs.Count > 0)
+                    {
+                        GetPairs(tdl.ToDLs);
                     }
                 }
             }
+            return pairs;
+        }
+
+        private void FindButton_Click(object sender, RoutedEventArgs e)
+        {
+            pairs.Clear();
+            GetPairs(tdls);
             count = pairs.Count;
             string message = count.ToString();
             message += " item(s) found";
@@ -100,6 +101,7 @@ namespace Tasks.Views
             //tasks.Clear();
             //tdlsLocations.Clear();
             //pairs.Clear();
+            count = 0;
         }
     }
 }
