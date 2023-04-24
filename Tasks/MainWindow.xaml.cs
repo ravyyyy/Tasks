@@ -216,11 +216,6 @@ namespace Tasks
             TaskListView.ItemsSource = treeViewVM.TDLs;
         }
 
-        private void Category_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void FinishedTasks_Click(object sender, RoutedEventArgs e)
         {
             TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
@@ -282,6 +277,17 @@ namespace Tasks
             if (treeViewVM != null)
             {
                 treeViewVM.TDLs = treeViewVM.LoopThroughTDLFilter3(treeViewVM.TDLs);
+            }
+        }
+
+        private void CategorySelected_Click(object sender, RoutedEventArgs e)
+        {
+            TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
+            if (treeViewVM != null)
+            {
+                MenuItem menuItem = sender as MenuItem;
+                Category category = menuItem.DataContext as Category;
+                treeViewVM.TDLs = treeViewVM.LoopThroughTDLFilter5(treeViewVM.TDLs, category);
             }
         }
     }

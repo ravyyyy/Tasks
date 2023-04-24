@@ -331,5 +331,30 @@ namespace Tasks.ViewModels
             }
             return tdls;
         }
+
+        public ObservableCollection<TDL> LoopThroughTDLFilter5(ObservableCollection<TDL> tdlCollection, Category category)
+        {
+            ObservableCollection<TDL> tdls = tdlCollection;
+            foreach (var tdl in tdls)
+            {
+                var tasksCopy = new List<Models.Task>(tdl.Tasks);
+                foreach (Models.Task task in tasksCopy)
+                {
+                    if (task.Category == category.Name)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        tdl.Tasks.Remove(task);
+                    }
+                }
+                if (tdl.ToDLs != null && tdl.ToDLs.Count > 0)
+                {
+                    LoopThroughTDLFilter5(tdl.ToDLs, category);
+                }
+            }
+            return tdls;
+        }
     }
 }

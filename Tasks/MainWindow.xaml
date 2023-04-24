@@ -54,7 +54,16 @@
                     <MenuItem Header="Priority" Click="Priority_Click"/>
                 </MenuItem>
                 <MenuItem Header="Filter">
-                    <MenuItem Header="Category" Click="Category_Click"/>
+                    <MenuItem Header="Category">
+                        <MenuItem.ItemTemplate>
+                            <DataTemplate>
+                                <MenuItem Header="{Binding Name}" Click="CategorySelected_Click"/>
+                            </DataTemplate>
+                        </MenuItem.ItemTemplate>
+                        <ItemsControl.ItemsSource>
+                            <Binding Path="Categories"/>
+                        </ItemsControl.ItemsSource>
+                    </MenuItem>
                     <MenuItem Header="Finished Tasks" Click="FinishedTasks_Click"/>
                     <MenuItem Header="Overdue Tasks" Click="OverdueTasks_Click"/>
                     <MenuItem Header="Tasks Unfinished and Overdue" Click="UnfinishedTasksOverdue_Click"/>
