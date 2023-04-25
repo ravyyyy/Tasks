@@ -397,5 +397,10 @@ namespace Tasks
                 MessageBox.Show("Please select TDL!", "Warning", MessageBoxButton.OK);
             }
         }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
