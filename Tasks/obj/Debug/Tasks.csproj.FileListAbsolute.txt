@@ -44,3 +44,5 @@ D:\Facultate\Anul II\Semestrul II\Medii vizuale de programare\Laboratoare\Tema2\
 D:\Facultate\Anul II\Semestrul II\Medii vizuale de programare\Laboratoare\Tema2\Tasks\Tasks\obj\Debug\Views\EditTDL.baml
 D:\Facultate\Anul II\Semestrul II\Medii vizuale de programare\Laboratoare\Tema2\Tasks\Tasks\obj\Debug\Views\AddSubTDL.g.cs
 D:\Facultate\Anul II\Semestrul II\Medii vizuale de programare\Laboratoare\Tema2\Tasks\Tasks\obj\Debug\Views\AddSubTDL.baml
+D:\Facultate\Anul II\Semestrul II\Medii vizuale de programare\Laboratoare\Tema2\Tasks\Tasks\obj\Debug\Views\AddRootTDL.g.cs
+D:\Facultate\Anul II\Semestrul II\Medii vizuale de programare\Laboratoare\Tema2\Tasks\Tasks\obj\Debug\Views\AddRootTDL.baml

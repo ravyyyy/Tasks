@@ -385,7 +385,17 @@ namespace Tasks
 
         private void AddRootTDL_Click(object sender, RoutedEventArgs e)
         {
-
+            TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
+            TDL selectedTDL = TDLTreeView.SelectedItem as TDL;
+            if( selectedTDL != null && treeViewVM != null)
+            {
+                AddRootTDL addRootTDL = new AddRootTDL(treeViewVM, selectedTDL);
+                addRootTDL.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please select TDL!", "Warning", MessageBoxButton.OK);
+            }
         }
     }
 }
