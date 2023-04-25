@@ -402,5 +402,13 @@ namespace Tasks
         {
             this.Close();
         }
+
+        private void NewDatabase_Click(object sender, RoutedEventArgs e)
+        {
+            this.DataContext = null;
+            TreeViewVM treeViewVM = new TreeViewVM();
+            treeViewVM.TDLs = new ObservableCollection<TDL>();
+            this.DataContext = treeViewVM;
+        }
     }
 }

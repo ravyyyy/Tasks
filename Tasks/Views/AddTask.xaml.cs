@@ -81,6 +81,10 @@ namespace Tasks.Views
                 Priority = priority2,
                 Type = type2
             };
+            if(tdl.Tasks == null)
+            {
+                tdl.Tasks = new ObservableCollection<Models.Task>();
+            }
             tdl.Tasks.Add(task);
             this.Close();
         }

@@ -68,6 +68,7 @@ namespace Tasks.ViewModels
             {
                 ints.Add(0);
             }
+            //TDLs = new ObservableCollection<TDL>();
             pairs = new ObservableCollection<KeyValuePair<string, TDL>>();
             TDLs = new ObservableCollection<TDL>
             {
@@ -132,7 +133,7 @@ namespace Tasks.ViewModels
                     }
                 }
                 },
-                
+
                 new TDL
                 {
                     Name = "d",

@@ -74,6 +74,10 @@ namespace Tasks.Views
             bool isDuplicate = false;
             if (selectedTDL != null)
             {
+                if(selectedTDL.ToDLs == null)
+                {
+                    selectedTDL.ToDLs = new ObservableCollection<TDL>();
+                }
                 foreach(TDL tdl in selectedTDL.ToDLs)
                 {
                     if(tdl.Name == name)

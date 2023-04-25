@@ -25,7 +25,7 @@
         <Menu Grid.Row="0" Grid.ColumnSpan="2">
             <MenuItem Header="File">
                 <MenuItem Header="Open Database"/>
-                <MenuItem Header="New Database"/>
+                <MenuItem Header="New Database" Click="NewDatabase_Click"/>
                 <MenuItem Header="Archive Database"/>
                 <MenuItem Header="Exit" Click="Exit_Click"/>
             </MenuItem>
