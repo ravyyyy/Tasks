@@ -30,7 +30,7 @@
                 <MenuItem Header="Exit"/>
             </MenuItem>
             <MenuItem Header="TDL">
-                <MenuItem Header="Add Root TDL"/>
+                <MenuItem Header="Add Root TDL" Click="AddRootTDL_Click"/>
                 <MenuItem Header="Add Sub-TDL" Click="AddSubTDL_Click"/>
                 <MenuItem Header="Edit" Click="EditTDL_Click"/>
                 <MenuItem Header="Delete" Click="DeleteTDL_Click"/>

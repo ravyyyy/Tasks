@@ -379,16 +379,13 @@ namespace Tasks
             TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
             ObservableCollection<TDL> tDLS = treeViewVM.TDLs;
             TDL selectedTDL = TDLTreeView.SelectedItem as TDL;
-            if(selectedTDL != null)
-            {
-                AddSubTDL addSubTDL = new AddSubTDL(selectedTDL);
-                addSubTDL.Show();
-            }
-            else
-            {
-                AddSubTDL addSubTDL = new AddSubTDL(tDLS);
-                addSubTDL.Show();
-            }
+            AddSubTDL addSubTDL = new AddSubTDL(tDLS ,selectedTDL);
+            addSubTDL.Show();
+        }
+
+        private void AddRootTDL_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
