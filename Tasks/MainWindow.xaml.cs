@@ -373,5 +373,22 @@ namespace Tasks
                 MessageBox.Show("You did not select a TDL!", "Warning", MessageBoxButton.OK);
             }
         }
+
+        private void AddSubTDL_Click(object sender, RoutedEventArgs e)
+        {
+            TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
+            ObservableCollection<TDL> tDLS = treeViewVM.TDLs;
+            TDL selectedTDL = TDLTreeView.SelectedItem as TDL;
+            if(selectedTDL != null)
+            {
+                AddSubTDL addSubTDL = new AddSubTDL(selectedTDL);
+                addSubTDL.Show();
+            }
+            else
+            {
+                AddSubTDL addSubTDL = new AddSubTDL(tDLS);
+                addSubTDL.Show();
+            }
+        }
     }
 }
