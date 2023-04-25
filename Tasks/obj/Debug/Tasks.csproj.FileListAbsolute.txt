@@ -40,3 +40,5 @@ D:\Facultate\Anul II\Semestrul II\Medii vizuale de programare\Laboratoare\Tema2\
 D:\Facultate\Anul II\Semestrul II\Medii vizuale de programare\Laboratoare\Tema2\Tasks\Tasks\obj\Debug\Views\ManageCategory.baml
 D:\Facultate\Anul II\Semestrul II\Medii vizuale de programare\Laboratoare\Tema2\Tasks\Tasks\obj\Debug\Views\SearchTask.g.cs
 D:\Facultate\Anul II\Semestrul II\Medii vizuale de programare\Laboratoare\Tema2\Tasks\Tasks\obj\Debug\Views\SearchTask.baml
+D:\Facultate\Anul II\Semestrul II\Medii vizuale de programare\Laboratoare\Tema2\Tasks\Tasks\obj\Debug\Views\EditTDL.g.cs
+D:\Facultate\Anul II\Semestrul II\Medii vizuale de programare\Laboratoare\Tema2\Tasks\Tasks\obj\Debug\Views\EditTDL.baml

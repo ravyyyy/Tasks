@@ -359,5 +359,19 @@ namespace Tasks
                 MessageBox.Show("Please select a TDL!", "Warning", MessageBoxButton.OK);
             }    
         }
+
+        private void EditTDL_Click(object sender, RoutedEventArgs e)
+        {
+            TDL selectedTDL = TDLTreeView.SelectedItem as TDL;
+            if(selectedTDL != null)
+            {
+                EditTDL editTDL = new EditTDL(selectedTDL);
+                editTDL.Show();
+            }
+            else
+            {
+                MessageBox.Show("You did not select a TDL!", "Warning", MessageBoxButton.OK);
+            }
+        }
     }
 }

@@ -44,8 +44,7 @@ namespace Tasks.ViewModels
         {
             new Category() { Name = "Work" },
             new Category() { Name = "Home" },
-            new Category() { Name = "School" },
-            new Category() { Name = "Outside" }
+            new Category() { Name = "School" }
         };
 
         public ObservableCollection<Category> Categories

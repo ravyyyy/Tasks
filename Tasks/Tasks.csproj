@@ -67,6 +67,9 @@
     <Compile Include="Views\EditTask.xaml.cs">
       <DependentUpon>EditTask.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\EditTDL.xaml.cs">
+      <DependentUpon>EditTDL.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ManageCategory.xaml.cs">
       <DependentUpon>ManageCategory.xaml</DependentUpon>
     </Compile>
@@ -90,6 +93,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EditTask.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditTDL.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -135,7 +142,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\home.png" />
-    <Resource Include="Images\outisde.png" />
     <Resource Include="Images\shopping.png" />
     <Resource Include="Images\work.png" />
   </ItemGroup>
