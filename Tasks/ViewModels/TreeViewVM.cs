@@ -26,7 +26,7 @@ namespace Tasks.ViewModels
         }
         public ObservableCollection<TDL> TDLs { get; set; }
         public ObservableCollection<KeyValuePair<string, TDL>> pairs { get; set; }
-        //public ObservableCollection<TDL> TDLsCopy { get; set; }
+        public ObservableCollection<TDL> TDLsCopy { get; set; }
 
         public ObservableCollection<int> ints {  get; set; }
 
@@ -170,7 +170,7 @@ namespace Tasks.ViewModels
                 }
                 }
             };
-            //TDLsCopy = new ObservableCollection<TDL>(TDLs.ToList());
+            TDLsCopy = new ObservableCollection<TDL>(TDLs);
         }
 
         public void AddCategory(string category)
@@ -206,6 +206,7 @@ namespace Tasks.ViewModels
         {
             foreach(var tdl in tdlCollection)
             {
+                if (tdl.Tasks == null) continue;
                 foreach (Models.Task task in tdl.Tasks)
                 {
                     if (task.Deadline == DateTime.Today)
@@ -239,21 +240,25 @@ namespace Tasks.ViewModels
 
         public ObservableCollection<TDL> LoopThroughTDLFilter1(ObservableCollection<TDL> tdlCollection)
         {
-            ObservableCollection<TDL> tdls = tdlCollection;
+            ObservableCollection<TDL> tdls = new ObservableCollection<TDL>(tdlCollection);
 
             foreach (var tdl in tdls)
             {
+                if (tdl.Tasks == null) continue;
+
                 var tasksCopy = new List<Models.Task>(tdl.Tasks);
 
                 foreach (Models.Task task in tasksCopy)
                 {
                     if (task.Status == false && task.Deadline > DateTime.Today)
                     {
-                        continue;
+                        //continue;
+                        task.IsHidden = false;
                     }
                     else
                     {
-                        tdl.Tasks.Remove(task);
+                        //tdl.Tasks.Remove(task);
+                        task.IsHidden = true;
                     }
                 }
 
@@ -268,19 +273,22 @@ namespace Tasks.ViewModels
 
         public ObservableCollection<TDL> LoopThroughTDLFilter2(ObservableCollection<TDL> tdlCollection)
         {
-            ObservableCollection<TDL> tdls = tdlCollection;
-            foreach(var tdl in tdls)
+            ObservableCollection<TDL> tdls = new ObservableCollection<TDL>(tdlCollection);
+            foreach (var tdl in tdls)
             {
+                if (tdl.Tasks == null) continue;
                 var tasksCopy = new List<Models.Task>(tdl.Tasks);
                 foreach(Models.Task task in tasksCopy)
                 {
                     if (task.Status == false && task.Deadline < DateTime.Today)
                     {
-                        continue;
+                        //continue;
+                        task.IsHidden = false;
                     }
                     else
                     {
-                        tdl.Tasks.Remove(task);
+                        //tdl.Tasks.Remove(task);
+                        task.IsHidden = true;
                     }
                 }
                 if(tdl.ToDLs != null && tdl.ToDLs.Count > 0)
@@ -293,19 +301,22 @@ namespace Tasks.ViewModels
 
         public ObservableCollection<TDL> LoopThroughTDLFilter3(ObservableCollection<TDL> tdlCollection)
         {
-            ObservableCollection<TDL> tdls = tdlCollection;
+            ObservableCollection<TDL> tdls = new ObservableCollection<TDL>(tdlCollection);
             foreach (var tdl in tdls)
             {
+                if (tdl.Tasks == null) continue;
                 var tasksCopy = new List<Models.Task>(tdl.Tasks);
                 foreach (Models.Task task in tasksCopy)
                 {
                     if (task.Deadline < task.DateOfFinish)
                     {
-                        continue;
+                        //continue;
+                        task.IsHidden = false;
                     }
                     else
                     {
-                        tdl.Tasks.Remove(task);
+                        //tdl.Tasks.Remove(task);
+                        task.IsHidden = true;
                     }
                 }
                 if (tdl.ToDLs != null && tdl.ToDLs.Count > 0)
@@ -318,19 +329,22 @@ namespace Tasks.ViewModels
 
         public ObservableCollection<TDL> LoopThroughTDLFilter4(ObservableCollection<TDL> tdlCollection)
         {
-            ObservableCollection<TDL> tdls = tdlCollection;
+            ObservableCollection<TDL> tdls = new ObservableCollection<TDL>(tdlCollection);
             foreach (var tdl in tdls)
             {
+                if (tdl.Tasks == null) continue;
                 var tasksCopy = new List<Models.Task>(tdl.Tasks);
                 foreach (Models.Task task in tasksCopy)
                 {
                     if (task.Status == true)
                     {
-                        continue;
+                        //continue;
+                        task.IsHidden = false;
                     }
                     else
                     {
-                        tdl.Tasks.Remove(task);
+                        //tdl.Tasks.Remove(task);
+                        task.IsHidden = true;
                     }
                 }
                 if (tdl.ToDLs != null && tdl.ToDLs.Count > 0)
@@ -343,19 +357,21 @@ namespace Tasks.ViewModels
 
         public ObservableCollection<TDL> LoopThroughTDLFilter5(ObservableCollection<TDL> tdlCollection, Category category)
         {
-            ObservableCollection<TDL> tdls = tdlCollection;
+            ObservableCollection<TDL> tdls = new ObservableCollection<TDL>(tdlCollection);
             foreach (var tdl in tdls)
             {
+                if (tdl.Tasks == null) continue;
                 var tasksCopy = new List<Models.Task>(tdl.Tasks);
                 foreach (Models.Task task in tasksCopy)
                 {
                     if (task.Category == category.Name)
                     {
-                        continue;
+                        task.IsHidden = false;
                     }
                     else
                     {
-                        tdl.Tasks.Remove(task);
+                        //tdl.Tasks.Remove(task);
+                        task.IsHidden = true;
                     }
                 }
                 if (tdl.ToDLs != null && tdl.ToDLs.Count > 0)

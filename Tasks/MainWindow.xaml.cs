@@ -250,7 +250,7 @@ namespace Tasks
             {
                 Task selectedTask = TaskListView.SelectedItem as Task;
                 treeViewVM.selectedTask = selectedTask;
-                //treeViewVM.TDLs = treeViewVM.TDLsCopy;
+                treeViewVM.TDLs = treeViewVM.TDLsCopy;
                 TDL selectedTDL = TDLTreeView.SelectedItem as TDL;
                 treeViewVM.selectedTdl = selectedTDL;
             }
@@ -261,7 +261,7 @@ namespace Tasks
             TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
             if(treeViewVM != null)
             {
-                //treeViewVM.TDLs = treeViewVM.TDLsCopy;
+                treeViewVM.TDLs = treeViewVM.TDLsCopy;
                 treeViewVM.TDLs = treeViewVM.LoopThroughTDLFilter1(treeViewVM.TDLs);
             }
         }
@@ -271,7 +271,7 @@ namespace Tasks
             TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
             if(treeViewVM != null)
             {
-                //treeViewVM.TDLs = treeViewVM.TDLsCopy;
+                treeViewVM.TDLs = treeViewVM.TDLsCopy;
                 treeViewVM.TDLs = treeViewVM.LoopThroughTDLFilter2(treeViewVM.TDLs);
             }    
         }
@@ -281,7 +281,7 @@ namespace Tasks
             TreeViewVM treeViewVM = this.DataContext as TreeViewVM;
             if (treeViewVM != null)
             {
-                //treeViewVM.TDLs = treeViewVM.TDLsCopy;
+                treeViewVM.TDLs = treeViewVM.TDLsCopy;
                 treeViewVM.TDLs = treeViewVM.LoopThroughTDLFilter3(treeViewVM.TDLs);
             }
         }
@@ -293,7 +293,7 @@ namespace Tasks
             {
                 MenuItem menuItem = sender as MenuItem;
                 Category category = menuItem.DataContext as Category;
-                //treeViewVM.TDLs = treeViewVM.TDLsCopy;
+                treeViewVM.TDLs = treeViewVM.TDLsCopy;
                 treeViewVM.TDLs = treeViewVM.LoopThroughTDLFilter5(treeViewVM.TDLs, category);
             }
         }

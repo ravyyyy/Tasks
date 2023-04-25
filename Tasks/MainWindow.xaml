@@ -88,7 +88,16 @@
         </TreeView>
 
         <ListView Name="TaskListView" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SelectedItem.Tasks, ElementName=TDLTreeView}"
-                   SelectionChanged="TaskListView_SelectionChanged">
+          SelectionChanged="TaskListView_SelectionChanged">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsHidden}" Value="True">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
                     <GridView.ColumnHeaderContainerStyle>
@@ -116,6 +125,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
+
 
         <Grid Grid.Column="0" Grid.Row="2">
             <Grid.ColumnDefinitions>

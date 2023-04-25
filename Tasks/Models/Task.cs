@@ -16,6 +16,7 @@ namespace Tasks.Models
 
     public class Task : BaseVM
     {
+        private bool isHidden;
         private bool status;
         private string name;
         private string description;
@@ -26,6 +27,16 @@ namespace Tasks.Models
         private DateTime deadline;
         private DateTime dateOfFinish;
         private string category;
+
+        public bool IsHidden
+        {
+            get { return isHidden; }
+            set
+            {
+                isHidden = value;
+                OnPropertyChanged(nameof(isHidden));
+            }
+        }
 
         public string Category
         {
