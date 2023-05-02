@@ -56,16 +56,23 @@ namespace Tasks.Views
             {
                 foreach (var tdl in ToDoLists)
                 {
-                    foreach (var task in tdl.Tasks)
+                    if (tdl.Tasks != null)
                     {
-                        if (task.Name == taskName)
+                        foreach (var task in tdl.Tasks)
                         {
-                            pairs.Add(new KeyValuePair<string, TDL>(taskName, tdl));
+                            if (task.Name == taskName)
+                            {
+                                pairs.Add(new KeyValuePair<string, TDL>(taskName, tdl));
+                            }
+                        }
+                        if (tdl.ToDLs != null && tdl.ToDLs.Count > 0)
+                        {
+                            GetPairs(tdl.ToDLs);
                         }
                     }
-                    if(tdl.ToDLs != null && tdl.ToDLs.Count > 0)
+                    else
                     {
-                        GetPairs(tdl.ToDLs);
+                        continue;
                     }
                 }
             }
@@ -73,17 +80,24 @@ namespace Tasks.Views
             {
                 foreach (var tdl in ToDoLists)
                 {
-                    foreach (var task in tdl.Tasks)
+                    if (tdl.Tasks != null)
                     {
-                        if (task.Name == taskName && tdl == selectedTdl)
+                        foreach (var task in tdl.Tasks)
                         {
-                            pairs.Add(new KeyValuePair<string, TDL>(taskName, selectedTdl));
+                            if (task.Name == taskName && tdl == selectedTdl)
+                            {
+                                pairs.Add(new KeyValuePair<string, TDL>(taskName, selectedTdl));
+                            }
+                        }
+                        if (tdl.ToDLs != null && tdl.ToDLs.Count > 0)
+                        {
+                            GetPairs(tdl.ToDLs);
                         }
                     }
-                    if (tdl.ToDLs != null && tdl.ToDLs.Count > 0)
+                    else
                     {
-                        GetPairs(tdl.ToDLs);
-                    }
+                        continue;
+                    }    
                 }
             }
             return pairs;

@@ -46,3 +46,34 @@ D:\Facultate\Anul II\Semestrul II\Medii vizuale de programare\Laboratoare\Tema2\
 D:\Facultate\Anul II\Semestrul II\Medii vizuale de programare\Laboratoare\Tema2\Tasks\Tasks\obj\Debug\Views\AddSubTDL.baml
 D:\Facultate\Anul II\Semestrul II\Medii vizuale de programare\Laboratoare\Tema2\Tasks\Tasks\obj\Debug\Views\AddRootTDL.g.cs
 D:\Facultate\Anul II\Semestrul II\Medii vizuale de programare\Laboratoare\Tema2\Tasks\Tasks\obj\Debug\Views\AddRootTDL.baml
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\bin\Debug\Tasks.exe.config
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\bin\Debug\Tasks.exe
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\bin\Debug\Tasks.pdb
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\Tasks.csproj.AssemblyReference.cache
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\Tasks.csproj.SuggestedBindingRedirects.cache
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\MainWindow.g.cs
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\Views\AddRootTDL.g.cs
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\Views\AddSubTDL.g.cs
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\Views\AddTask.g.cs
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\Views\EditTask.g.cs
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\Views\EditTDL.g.cs
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\Views\ManageCategory.g.cs
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\Views\SearchTask.g.cs
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\App.g.cs
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\Tasks_MarkupCompile.cache
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\Tasks_MarkupCompile.lref
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\MainWindow.baml
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\Views\AddRootTDL.baml
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\Views\AddSubTDL.baml
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\Views\AddTask.baml
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\Views\EditTask.baml
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\Views\EditTDL.baml
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\Views\ManageCategory.baml
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\Views\SearchTask.baml
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\Tasks.g.resources
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\Tasks.Properties.Resources.resources
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\Tasks.csproj.GenerateResource.cache
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\Tasks.csproj.CoreCompileInputs.cache
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\Tasks.exe
+C:\Users\Dragos\Downloads\Tasks\Tasks\Tasks\obj\Debug\Tasks.pdb
